@@ -1,14 +1,11 @@
-// Notice that the BinaryTree class is technically not needed. All the major logic is in the Node. 
-// This is usually the case for recursive structures. This class merely starts recursion
-// with default values.
-
+//MP
 public class BinaryTree
 {
     public Node root;
 
     public String about()
 	{
-		return "Written by D. Cook for CSC 130.";
+		return "Author: Moises Pantoja";
 	}
 	
     public BinaryTree()
