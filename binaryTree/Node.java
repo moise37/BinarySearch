@@ -51,7 +51,7 @@ public class Node
         }
         
         //Infix
-        System.out.print(this.data + ' ');   //Just print the data (no newline) and a space
+        System.out.print(this.data + " ");   //Just print the data (no newline) and a space
 
         if (this.right != null)
         {
@@ -62,11 +62,11 @@ public class Node
 /*added code */
 
     public void add(int value){
-        //if (contains(this.value)) {   /*true and does nothing */}
+        if (contains(value)) {   /*true and does nothing */}
         
-        //else{       //the current value is not equal to the
+        else{       //the current value is not equal to the
                     //current node so test left and right
-            if ((Integer)value < (Integer)data) {
+            if (value < data) {
                 if (this.left == null) {
                     this.left = new Node(value);
                 }else{
@@ -79,47 +79,76 @@ public class Node
                     this.right.add(value);
                 }
             }//adds the value to the correct position
-        //}    // if it already exists, nothing       
+        }    // if it already exists, nothing       
     }
     public boolean contains(int value)
     {    
-        if (value == data) 
-        {//returns True if it is in the tree
-            return true;
-        }else
+        if (value != data) 
         {
             if (value < data) 
             {
                 if (left == null) 
                 {
-                    
+                    return false;
                 }else
-                {
+                {   
                     return left.contains(value);
                 }
             }
-            if (value > (Integer)data) 
+            if (value > data) 
             {
                 if (right == null) 
-                {
-                    
+                {   
+                    return false;
                 }else
-                {
+                {   
                     return right.contains(value);
                 }
             }
+        }else{
+            return true;
         }return true;
     }
     public void remove(int value)
     {
-        // .contains(int value) then
-            //if true { remove}
-               //else nothing 
-    
+        if (contains(value)) {
+            
+            if (value < data) 
+            {
+                if (left == null) 
+                {}else
+                {   
+                    
+                    left.remove(value);
+                    data = minValue(left);
+                }
+            }
+            if (value > data) 
+            {
+                if (right == null) 
+                {}else
+                {   
+                    right.remove(value);
+                    data = minValue(right);
+                }
+            }
+            
+            data = minValue(right);
+            data = right.data;
+        }
     }
     public void clear(){
+        
         //remove all the nodes from tree
             //recursive postorder
                 //left = null, right = null
+    }
+    public int minValue(Node base){
+        int minValue = data;
+        while(base.left != null){
+            minValue = base.data;
+            base = base.left;
+        }
+        return minValue;
     }
 }

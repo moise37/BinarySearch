@@ -13,11 +13,6 @@ public class BinarySearchTree
         this.root = null;
     }
 
-    public BinarySearchTree(Node root)
-    {
-        this.root = root;
-    }
-
     public void printTree()
     {
         if (this.root != null)
@@ -37,7 +32,7 @@ public class BinarySearchTree
 
     public void add(int value){
         if (root == null) {
-           root = new Node(value);
+            root = new Node(value);
         }else{
             root.add(value);
         }
@@ -53,5 +48,6 @@ public class BinarySearchTree
 
     public void clear(){
         root.clear();
+        root = null;
     }
 }
